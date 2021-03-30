@@ -9,9 +9,19 @@
 package org.avi.productmanagement;
 
 import org.avi.productmanagement.constants.Rating;
+import org.avi.productmanagement.products.Food;
+import org.avi.productmanagement.products.ProductManager;
+
+import java.time.LocalDate;
+import java.util.Locale;
 
 public class Shop {
     public static void main(String[] args) {
-        System.out.println(Rating.FIVE_STAR.getStars());
+        ProductManager pm = new ProductManager(Locale.US);
+        pm.createProduct(101, "Chocolate", 2.5, Rating.FIVE_STAR, LocalDate.of(2022,12, 01));
+        pm.createProduct(102, "Bread", 1.5, Rating.THREE_STAR, LocalDate.of(2022,12, 01));
+        pm.createProduct(103, "Cola", 0.75, Rating.NOT_RATED);
+        pm.printProduct();
+        //System.out.println(f1.toString());
     }
 }

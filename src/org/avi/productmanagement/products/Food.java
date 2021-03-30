@@ -14,10 +14,28 @@ import java.time.LocalDate;
 
 public class Food extends Product{
 
-    private LocalDate expiryDate;
+    private LocalDate bestBefore;
 
-    public Food(int id, String name, Rating rating, LocalDate expiryDate) {
-        super(id, name, rating);
-        this.expiryDate = expiryDate;
+    public Food(int id, String name, double price, Rating rating, LocalDate bestBefore) {
+        this(id, name, price, rating);
+        this.bestBefore = bestBefore;
+    }
+
+    public Food(int id, String name, double price, Rating rating) {
+        super(id, name, price, rating);
+    }
+
+    public Food(int id, double price, String name) {
+        this(id, name, price, Rateable.DEFAULT_RATING);
+    }
+
+    @Override
+    public String toString(){
+        return super.toString() + " " + bestBefore;
+    }
+
+    @Override
+    public Product applyRating(Rating rating) {
+        return new Food(getId(), getName(), getPrice(), rating, LocalDate.now());
     }
 }

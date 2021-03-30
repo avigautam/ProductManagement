@@ -11,7 +11,16 @@ package org.avi.productmanagement.products;
 import org.avi.productmanagement.constants.Rating;
 
 public class Drink extends Product{
-    public Drink(int id, String name, Rating rating) {
-        super(id, name, rating);
+    public Drink(int id, String name, double price, Rating rating) {
+        super(id, name, price, rating);
+    }
+
+    public Drink(int id, String name, double price) {
+        this(id, name, price, Rateable.DEFAULT_RATING);
+    }
+
+    @Override
+    public Product applyRating(Rating rating) {
+        return new Drink(getId(),getName(), getPrice(), rating);
     }
 }

@@ -9,4 +9,5 @@
 package org.avi.productmanagement.constants;
 
 public class Constants {
+    public static final double DEFAULT_DISCOUNT = 0.1;
 }
